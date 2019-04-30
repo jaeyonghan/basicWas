@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <appender name="serverApiLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/debug.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <pattern>%d{yyyy:MM:dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- pattern>TIME LEVEL CLASS METHOD LINE MSG</pattern -->
+            <pattern>%d %.-3p %-20.-20C{0} %-20.-20M [%4.4L] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="was" level="DEBUG" />
+
+    <root level="DEBUG">
+        <appender-ref ref="serverApiLog" />
+    </root>
+    <root level="DEBUG">
+        <appender-ref ref="console" />
+    </root>
+</configuration>

@@ -1,0 +1,33 @@
+{
+  "port" : 8081,
+  "server" : [
+    {
+      "host": "sample.com",
+      "mapper" : {
+        "root" : "was.servlet.impl",
+        "/Greeting" : "Hello",
+        "/super.Greeting": "service.Hello"
+      },
+      "resource": {
+        "root": "sample",
+        "403": "403.html",
+        "404": "404.html",
+        "500": "500.html"
+      }
+    },
+    {
+      "host" : "currenttime.com",
+      "mapper" : {
+        "root" : "was.servlet.impl",
+        "/Greeting" : "Hello",
+        "/super.Greeting": "service.Hello"
+      },
+      "resource" : {
+        "root" : "current",
+        "403": "403.html",
+        "404": "404.html",
+        "500": "500.html"
+      }
+    }
+  ]
+}
